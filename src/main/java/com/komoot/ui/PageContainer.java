@@ -7,6 +7,7 @@ public class PageContainer {
 
     public WebDriver driver;
     public LandingPage landingPage;
+    public SignInPage signInPage;
 
     /**
      * Constructor of the class
@@ -23,6 +24,7 @@ public class PageContainer {
      */
     public void initPages() {
         landingPage= new LandingPage(driver);
+        signInPage = new SignInPage(driver);
     }
 
 }

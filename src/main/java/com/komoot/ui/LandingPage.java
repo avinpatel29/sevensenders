@@ -29,10 +29,21 @@ public class LandingPage extends PageBase {
     @FindBy(how = How.XPATH, using = "//div[contains(@class, 'tw-flex-none tw-flex')]/div[3]")
     private WebElement LANGUAGE_DROPDOWN;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class, 'tw-flex-none tw-flex')]/div[4]//button")
+    @FindBy(how = How.XPATH, using = "//div[contains(@class, 'tw-flex-none tw-flex')]/div[4]//button/span")
     private WebElement SIGNIN_LOGIN_BUTTON;
 
-    
+    @FindBy(how = How.XPATH, using = "//input[@id='email']")
+    private WebElement EMAIL_TEXTFIELD;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='gdpr_banner_portal']")
+    private WebElement COOKIES_SECTION;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='gdpr_banner_portal']/div/div/div/div[2]/div/div[1]/button")
+    private WebElement COOKIES_ACCEPTALL_BUTTON;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='gdpr_banner_portal']/div/div/div/div[2]/div/div[3]/button")
+    private WebElement COOKIES_DECLINE_BUTTON;
+
     public boolean isKomootLogoPresent(){
         waitForElementTobeClickable(KOMOOT_LOGO);
         if(isElementPresent(KOMOOT_LOGO))
@@ -89,4 +100,17 @@ public class LandingPage extends PageBase {
             return false;
     }
 
+    public void clickSignIn_LoginButton(){
+        clickAndWait(SIGNIN_LOGIN_BUTTON,EMAIL_TEXTFIELD);
+    }
+
+    public void acceptAllCookies(){
+        waitForElementToBePresent(COOKIES_SECTION);
+        click(COOKIES_ACCEPTALL_BUTTON);
+        waitForElementTillnotPresent(COOKIES_SECTION);
+    }
+
+    public void declineCookies(){
+
+    }
 }

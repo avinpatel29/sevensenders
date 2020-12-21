@@ -6,4 +6,14 @@ Step-4: Assert "Route Planner link" is present or not. If not present, throws er
 Step-5: Assert "Features link" is present or not. If not present, throws error message which is defined
 Step-6: Assert "Shop button" is present or not. If not present, throws error message which is defined
 Step-7: Assert "Language dropdown" is present or not. If not present, throws error message which is defined
-Step-7: Assert "Login/SignIn button" is present or not. If not present, throws error message which is defined
+Step-8: Assert "Login/SignIn button" is present or not. If not present, throws error message which is defined
+
+
+Testcase 2:
+Step-1: Enter Komoot URL
+Step-2: Once on the landing page, user clicks on "Accept all" cookies button
+Step-3: User clicks on "Sign Up or log in" button
+Step-4: User enters the email with which to login in and then clicks on "Continue with email" button
+Step-5: User then enters the password
+Step-6: User clicks on "Log In" button
+Step-7: User should be logged in successfully and verify with the username field after login (to confirm)

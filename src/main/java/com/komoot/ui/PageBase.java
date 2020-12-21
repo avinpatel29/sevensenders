@@ -1,7 +1,6 @@
 package com.komoot.ui;
 
 import org.apache.log4j.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.util.Map;
 
 /**
  * @author avinashpatel
@@ -130,11 +128,11 @@ public class PageBase {
 
     }
 
-    public void waitForElementTillnotPresent(By element) {
+    public void waitForElementTillnotPresent(WebElement element) {
         WebDriverWait w = new WebDriverWait(driver, 20);
         try {
             log.info("Waiting for the element:"+element +" not to be visible");
-            w.until(ExpectedConditions.invisibilityOfElementLocated(element));
+            w.until(ExpectedConditions.invisibilityOf(element));
         } catch (Exception e) {
             e.printStackTrace();
         }
