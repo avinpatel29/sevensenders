@@ -1,0 +1,9 @@
+Testcase 1:
+Step-1: Enter Komoot URL
+Step-2: Assert "Komoot logo link" is present or not. If not present, throws error message which is defined
+Step-3: Assert "Discover link" is present or not. If not present, throws error message which is defined
+Step-4: Assert "Route Planner link" is present or not. If not present, throws error message which is defined
+Step-5: Assert "Features link" is present or not. If not present, throws error message which is defined
+Step-6: Assert "Shop button" is present or not. If not present, throws error message which is defined
+Step-7: Assert "Language dropdown" is present or not. If not present, throws error message which is defined
+Step-7: Assert "Login/SignIn button" is present or not. If not present, throws error message which is defined
