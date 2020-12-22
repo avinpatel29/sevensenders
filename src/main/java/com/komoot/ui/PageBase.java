@@ -1,10 +1,7 @@
 package com.komoot.ui;
 
 import org.apache.log4j.*;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -78,7 +75,11 @@ public class PageBase {
         clickElement.click();
         log.info("Waiting for the element: "+waitElement+" to be clickable");
         WebDriverWait wait = new WebDriverWait(driver, 90);
-        wait.until(ExpectedConditions.elementToBeClickable(waitElement));
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(waitElement));
+        }catch (StaleElementReferenceException e){
+            wait.until(ExpectedConditions.elementToBeClickable(waitElement));
+        }
     }
 
     /**

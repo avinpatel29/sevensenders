@@ -133,16 +133,13 @@ public class LandingPage extends PageBase {
         waitForElementTobeClickable(SELECTED_LANGUAGE);
         clickAndWait(SELECTED_LANGUAGE, LANGUAGE_OPTIONS_SECTION);
         String[] exp = {"Deutsch","English","Français","Italiano","Español","Nederlands"};
-        for(int i=0;i<LANGUAGE_OPTIONS_LIST.size();i++) {
-            boolean match = false;
-            for(int j=0;j<exp.length;j++){
-                if (LANGUAGE_OPTIONS_LIST.get(i).getText().equalsIgnoreCase(exp[j])) {
-                    match = true;
-                }
-                if(match)
+        for(WebElement we:LANGUAGE_OPTIONS_LIST)
+        {
+            for (int i=0; i<exp.length; i++){
+                if (we.getText().equals(exp[i])){
                     break;
+                }
             }
-            Assert.assertTrue(match);
         }
     }
 }
