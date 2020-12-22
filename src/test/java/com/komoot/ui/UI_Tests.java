@@ -47,7 +47,7 @@ public class UI_Tests extends TestBaseUI  {
         Assert.assertFalse(container.signInPage.clickLogInButton(data.get("username")));
     }
 
-    @Test(priority = 5, description="Log into Kamoot with invalid credentials")
+    @Test(priority = 5, description="Verify Discover BikeTouring Types")
     public void verifyDiscover_BikeTouring() throws ConfigurationException {
         container.landingPage.enterURL(GetConfig.getProperties("SITE_URL"));
         container.landingPage.acceptAllCookies();

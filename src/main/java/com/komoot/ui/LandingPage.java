@@ -129,7 +129,6 @@ public class LandingPage extends PageBase {
     }
 
     public void verifyLanguageAvailable(){
-        waitForPageToLoad();
         waitForElementTobeClickable(SELECTED_LANGUAGE);
         clickAndWait(SELECTED_LANGUAGE, LANGUAGE_OPTIONS_SECTION);
         String[] exp = {"Deutsch","English","Français","Italiano","Español","Nederlands"};

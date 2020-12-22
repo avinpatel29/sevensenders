@@ -1,0 +1,18 @@
+1. When I install Jenkins I want a local Jenkins instance to run on my computer.
+A. By default, master node runs on the computer where jenkins is installed. If needed, we can create a new slave node by using any of the launch methods available while setting it up.
+
+2. I want to configure a Jenkins Job to run my automated tests on Jenkins, scheduled for noon everyday on one browser of your choice,
+including a generated Test report for your scenarios.
+A: We can set the value "0 12 * * * " for schedule which can be enabled by checking "Build Perodically" option inside the job. We can pass choice of browser via maven command line parameters or by setting the value in jenkins which can be passed to the tests. With respect to Test reports, we can use default maven sure-fire reports or use avenstack reports or TESTNG reports with the help of "HTML publisher" plugin to show results as part of the build.
+
+3. If possible host the Jenkins. If not please send an attached documentation regarding your setup.
+A. I have setup jenkins locally and below are the high level steps documented:
+i. I have installed & hosted the jenkins locally using the jenkins.msi file (whose steps were mostly self explanatory). 
+ii. Once setup is complete, we can cross check whether jenkins service is up & running by executing the command "services.msc" in run.
+iii. Once the service is up & running, open the browser and type in localhost:8080 (default port while installing)
+iv. For the 1st time, it will ask for 'initial Administrator password' which will be created automatically and stored as part of a file
+v. Once the password is put in, it allows to create user, password etc to access the Jenkins. We can skip this, if needed.
+vi. User will be redirected to home page.
+
+
+Please Note: The above steps are High level as detailed description would require proper screenshots and in-depth steps to completely understand.
