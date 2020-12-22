@@ -11,9 +11,33 @@ Step-8: Assert "Login/SignIn button" is present or not. If not present, throws e
 
 Testcase 2:
 Step-1: Enter Komoot URL
+Step-2: Click on the language dropdown and verify the languages available
+
+
+Testcase 3:
+Step-1: Enter Komoot URL
 Step-2: Once on the landing page, user clicks on "Accept all" cookies button
 Step-3: User clicks on "Sign Up or log in" button
 Step-4: User enters the email with which to login in and then clicks on "Continue with email" button
 Step-5: User then enters the password
 Step-6: User clicks on "Log In" button
 Step-7: User should be logged in successfully and verify with the username field after login (to confirm)
+
+
+Testcase 4:
+Step-1: Enter Komoot URL
+Step-2: Once on the landing page, user clicks on "Accept all" cookies button
+Step-3: User clicks on "Sign Up or log in" button
+Step-4: User enters the email with which to login in and then clicks on "Continue with email" button
+Step-5: User then enters invalid password
+Step-6: User clicks on "Log In" button
+Step-7: Asserting "invalid credentials" error message shown on the page
+
+
+Testcase 5:
+Step-1: Enter Komoot URL
+Step-2: Once on the landing page, user clicks on "Accept all" cookies button
+Step-3: User clicks on "Sign Up or log in" button
+Step-4: User enters the email, password and clicks on logins successfully
+Step-6: User clicks on "Discover" header option
+Step-7: Verifies all the touring options icon are shown or not

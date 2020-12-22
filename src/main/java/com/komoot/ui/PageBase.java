@@ -33,6 +33,7 @@ public class PageBase {
     public void enterURL(String url) {
         log.info("Executing GET URL command on the browser");
         driver.get(url);
+        waitForPageToLoad();
     }
 
     /**
@@ -140,7 +141,7 @@ public class PageBase {
     }
 
     public void waitForElementToBePresent(WebElement element) {
-        WebDriverWait w = new WebDriverWait(driver, 30);
+        WebDriverWait w = new WebDriverWait(driver, 15);
         try {
             log.info("Waiting for the element:"+element +" to be visible");
             w.until(ExpectedConditions.visibilityOf(element));

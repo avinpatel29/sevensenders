@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
+import java.util.List;
 
 public class LandingPage extends PageBase {
 
@@ -43,6 +45,18 @@ public class LandingPage extends PageBase {
 
     @FindBy(how = How.XPATH, using = "//div[@id='gdpr_banner_portal']/div/div/div/div[2]/div/div[3]/button")
     private WebElement COOKIES_DECLINE_BUTTON;
+
+    @FindBy(how = How.XPATH, using = "//div[@class='tw-shadow-xl']")
+    private WebElement TOURING_OPTIONS;
+
+    @FindBy(how = How.XPATH, using = "//span[@class='tw-font-bold tw-mr-1']")
+    private WebElement SELECTED_LANGUAGE;
+
+    @FindBy(how = How.XPATH, using = "//ul[@class='c-dropdown__menu tw-z-6']")
+    private WebElement LANGUAGE_OPTIONS_SECTION;
+
+    @FindBy(how = How.XPATH, using = "//ul[@class='c-dropdown__menu tw-z-6']/li")
+    private List<WebElement> LANGUAGE_OPTIONS_LIST;
 
     public boolean isKomootLogoPresent(){
         waitForElementTobeClickable(KOMOOT_LOGO);
@@ -110,7 +124,25 @@ public class LandingPage extends PageBase {
         waitForElementTillnotPresent(COOKIES_SECTION);
     }
 
-    public void declineCookies(){
+    public void clickDiscoverLink(){
+        clickAndWait(DISCOVER_LINK, TOURING_OPTIONS);
+    }
 
+    public void verifyLanguageAvailable(){
+        waitForPageToLoad();
+        waitForElementTobeClickable(SELECTED_LANGUAGE);
+        clickAndWait(SELECTED_LANGUAGE, LANGUAGE_OPTIONS_SECTION);
+        String[] exp = {"Deutsch","English","Français","Italiano","Español","Nederlands"};
+        for(int i=0;i<LANGUAGE_OPTIONS_LIST.size();i++) {
+            boolean match = false;
+            for(int j=0;j<exp.length;j++){
+                if (LANGUAGE_OPTIONS_LIST.get(i).getText().equalsIgnoreCase(exp[j])) {
+                    match = true;
+                }
+                if(match)
+                    break;
+            }
+            Assert.assertTrue(match);
+        }
     }
 }

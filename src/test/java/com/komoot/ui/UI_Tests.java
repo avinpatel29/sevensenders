@@ -5,12 +5,7 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
 public class UI_Tests extends TestBaseUI  {
-
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyhhmmss");
 
     @Test(priority = 1, description="Verify Landing page header links")
     public void verify_Landing_Page_HeaderLinks() throws ConfigurationException {
@@ -25,7 +20,14 @@ public class UI_Tests extends TestBaseUI  {
     }
 
 
-    @Test(priority = 2, description="Log into Kamoot with valid credentials")
+    @Test(priority = 2, description="Verify languages available in the site")
+    public void verifyLanguagesAvailable() throws ConfigurationException {
+        container.landingPage.enterURL(GetConfig.getProperties("SITE_URL"));
+        container.landingPage.acceptAllCookies();
+        container.landingPage.verifyLanguageAvailable();
+    }
+
+    @Test(priority = 3, description="Log into Kamoot with valid credentials")
     public void loginWithValidCredentials() throws ConfigurationException {
         container.landingPage.enterURL(GetConfig.getProperties("SITE_URL"));
         container.landingPage.acceptAllCookies();
@@ -33,6 +35,26 @@ public class UI_Tests extends TestBaseUI  {
         container.signInPage.inputEmail(data.get("email"));
         container.signInPage.inputPassword(data.get("password"));
         Assert.assertTrue(container.signInPage.clickLogInButton(data.get("username")));
+    }
+
+    @Test(priority = 4, description="Log into Kamoot with invalid credentials")
+    public void loginWithInvalidCredentials() throws ConfigurationException {
+        container.landingPage.enterURL(GetConfig.getProperties("SITE_URL"));
+        container.landingPage.acceptAllCookies();
+        container.landingPage.clickSignIn_LoginButton();
+        container.signInPage.inputEmail(data.get("email"));
+        container.signInPage.inputPassword(data.get("password"));
+        Assert.assertFalse(container.signInPage.clickLogInButton(data.get("username")));
+    }
+
+    @Test(priority = 5, description="Log into Kamoot with invalid credentials")
+    public void verifyDiscover_BikeTouring() throws ConfigurationException {
+        container.landingPage.enterURL(GetConfig.getProperties("SITE_URL"));
+        container.landingPage.acceptAllCookies();
+        container.landingPage.clickSignIn_LoginButton();
+        container.signInPage.loginToKomoot(data.get("email"),data.get("password"),data.get("username"));
+        container.landingPage.clickDiscoverLink();
+        container.discoverPage.verifyTouringTypes();
     }
 
 }
