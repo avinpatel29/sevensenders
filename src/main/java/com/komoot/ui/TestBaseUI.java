@@ -74,6 +74,7 @@ public class TestBaseUI {
                 System.setProperty("webdriver.chrome.driver",
                         getProperty("user.dir") + GetConfig.getProperties("Win_chromePath"));
                 ChromeOptions options = new ChromeOptions();
+                options.setBinary(getProperty("user.dir") + GetConfig.getProperties("Win_chromePath"));
                 options.addArguments("start-maximized");
                 driver = new ChromeDriver(options);
             } else if (browser.equalsIgnoreCase("firefox")) {
