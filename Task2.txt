@@ -1,0 +1,19 @@
+Req: Return Employee record with highest salary
+Query: Select TOP 1 * FROM Employee ORDER BY salary DESC
+
+Req: Return the highest salary in employee table
+Query: SELECT MAX(SALARY) FROM Employee
+
+Req: Return 2nd highest salary from employee table 
+Query: SELECT MAX(SALARY) FROM Employee WHERE SALARY<(SELECT MAX(SALARY) FROM EMPLOYEE)
+
+Req: Select range of employees based on id
+Query: SELECT * FROM Employee WHERE emp_id BETWEEN 1000 and 1008
+
+Req: Return an employee with highest salary and the employee’s department name 
+Query: SELECT TOP 1 emp_id,first_name, last_name, gender,position,d.department_id, salary, department_name
+FROM Employee e join department d on e.department_id = d.department_id ORDER BY Salary DESC
+
+Req: Return highest salary, employee_name, department_name for EACH department
+Query: SELECT department_name, MAX(SALARY) FROM Employee e RIGHT JOIN Department d 
+ON e.department_id = d.department_id GROUP BY department_name
